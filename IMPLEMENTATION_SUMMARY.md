@@ -83,7 +83,7 @@ This implementation provides a comprehensive Business Central extension for mana
 - [x] Two-tier permission system:
   - Full Access permission set
   - Read Only permission set
-- [x] GDPR compliance (all fields marked as CustomerContent)
+- [x] GDPR compliance (all fields marked as ToBeClassified)
 - [x] Audit trail (Created By, timestamps)
 - [x] Field-level security through BC permissions
 
@@ -292,7 +292,7 @@ Assessment: Time-based Health Check
 - Service accounts for automation
 
 ### Data Protection
-- GDPR compliance: CustomerContent classification
+- GDPR compliance: ToBeClassified classification
 - Audit trail: Created By, timestamps
 - Data retention: Configurable policies
 - Field-level security: BC permissions

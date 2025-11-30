@@ -1,7 +1,7 @@
 table 50001 "RWMS Sensor Configuration"
 {
     Caption = 'Sensor Configuration';
-    DataClassification = CustomerContent;
+    DataClassification = ToBeClassified;
     LookupPageId = "RWMS Sensor Config List";
     DrillDownPageId = "RWMS Sensor Config List";
 
@@ -10,138 +10,138 @@ table 50001 "RWMS Sensor Configuration"
         field(1; "Sensor ID"; Code[30])
         {
             Caption = 'Sensor ID';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(2; "Warehouse Code"; Code[20])
         {
             Caption = 'Warehouse Code';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             TableRelation = "RWMS Warehouse";
         }
         field(3; "Sensor Type"; Enum "RWMS Sensor Type")
         {
             Caption = 'Sensor Type';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(4; Description; Text[100])
         {
             Caption = 'Description';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(5; Location; Text[100])
         {
             Caption = 'Location';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(6; "Zone Code"; Code[20])
         {
             Caption = 'Zone Code';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(7; Status; Enum "RWMS Sensor Status")
         {
             Caption = 'Status';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(8; "Min Value"; Decimal)
         {
             Caption = 'Min Value';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
         }
         field(9; "Max Value"; Decimal)
         {
             Caption = 'Max Value';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
         }
         field(10; "Warning Threshold Min"; Decimal)
         {
             Caption = 'Warning Threshold Min';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
         }
         field(11; "Warning Threshold Max"; Decimal)
         {
             Caption = 'Warning Threshold Max';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
         }
         field(12; "Critical Threshold Min"; Decimal)
         {
             Caption = 'Critical Threshold Min';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
         }
         field(13; "Critical Threshold Max"; Decimal)
         {
             Caption = 'Critical Threshold Max';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
         }
         field(14; "Unit of Measure"; Text[10])
         {
             Caption = 'Unit of Measure';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(15; "Polling Interval (Sec)"; Integer)
         {
             Caption = 'Polling Interval (Sec)';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             MinValue = 1;
         }
         field(16; "Last Reading DateTime"; DateTime)
         {
             Caption = 'Last Reading DateTime';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
         field(17; "Last Reading Value"; Decimal)
         {
             Caption = 'Last Reading Value';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 4;
             Editable = false;
         }
         field(18; "Installation Date"; Date)
         {
             Caption = 'Installation Date';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(19; "Maintenance Due Date"; Date)
         {
             Caption = 'Maintenance Due Date';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(20; "Manufacturer"; Text[50])
         {
             Caption = 'Manufacturer';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(21; "Model"; Text[50])
         {
             Caption = 'Model';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(22; "Serial No."; Text[50])
         {
             Caption = 'Serial No.';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(23; "API Endpoint"; Text[250])
         {
             Caption = 'API Endpoint';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(24; "Alert Enabled"; Boolean)
         {
             Caption = 'Alert Enabled';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(25; "Alert Email"; Text[80])
         {
             Caption = 'Alert Email';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
     }
 

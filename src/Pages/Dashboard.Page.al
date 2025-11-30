@@ -112,32 +112,5 @@ page 50006 "RWMS Dashboard"
                 RunPageMode = Create;
             }
         }
-        area(Reporting)
-        {
-            action(SensorDataReport)
-            {
-                ApplicationArea = All;
-                Caption = 'Sensor Data Report';
-                ToolTip = 'Generate sensor data report.';
-                Image = Report;
-
-                trigger OnAction()
-                begin
-                    Message('Sensor data reporting functionality will be implemented.');
-                end;
-            }
-            action(AnalyticsReport)
-            {
-                ApplicationArea = All;
-                Caption = 'Analytics Report';
-                ToolTip = 'Generate analytics report.';
-                Image = AnalysisView;
-
-                trigger OnAction()
-                begin
-                    Message('Analytics reporting functionality will be implemented.');
-                end;
-            }
-        }
     }
 }

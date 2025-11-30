@@ -1,7 +1,7 @@
 table 50000 "RWMS Warehouse"
 {
     Caption = 'Warehouse';
-    DataClassification = CustomerContent;
+    DataClassification = ToBeClassified;
     LookupPageId = "RWMS Warehouse List";
     DrillDownPageId = "RWMS Warehouse List";
 
@@ -10,71 +10,71 @@ table 50000 "RWMS Warehouse"
         field(1; "Code"; Code[20])
         {
             Caption = 'Code';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(2; Name; Text[100])
         {
             Caption = 'Name';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(3; Address; Text[100])
         {
             Caption = 'Address';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(4; "Address 2"; Text[50])
         {
             Caption = 'Address 2';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(5; City; Text[30])
         {
             Caption = 'City';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(6; "Post Code"; Code[20])
         {
             Caption = 'Post Code';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(7; "Country/Region Code"; Code[10])
         {
             Caption = 'Country/Region Code';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             TableRelation = "Country/Region";
         }
         field(8; "Phone No."; Text[30])
         {
             Caption = 'Phone No.';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(9; "E-Mail"; Text[80])
         {
             Caption = 'E-Mail';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(10; "Location Code"; Code[10])
         {
             Caption = 'Location Code';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             TableRelation = Location;
         }
         field(11; "Square Meters"; Decimal)
         {
             Caption = 'Square Meters';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 2;
         }
         field(12; "Max Capacity"; Decimal)
         {
             Caption = 'Max Capacity';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             DecimalPlaces = 2 : 2;
         }
         field(13; "Active Robots"; Integer)
         {
             Caption = 'Active Robots';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
         field(14; "Total Sensors"; Integer)
@@ -87,35 +87,35 @@ table 50000 "RWMS Warehouse"
         field(15; "Last Data Update"; DateTime)
         {
             Caption = 'Last Data Update';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
         field(16; Status; Option)
         {
             Caption = 'Status';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             OptionMembers = Active,Inactive,Maintenance;
             OptionCaption = 'Active,Inactive,Maintenance';
         }
         field(17; "Manager Name"; Text[100])
         {
             Caption = 'Manager Name';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(18; "Operating Hours"; Text[50])
         {
             Caption = 'Operating Hours';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(19; "AI Analytics Enabled"; Boolean)
         {
             Caption = 'AI Analytics Enabled';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
         field(20; Notes; Blob)
         {
             Caption = 'Notes';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
     }
 

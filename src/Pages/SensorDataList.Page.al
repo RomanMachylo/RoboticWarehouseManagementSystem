@@ -5,10 +5,10 @@ page 50004 "RWMS Sensor Data List"
     UsageCategory = Lists;
     SourceTable = "RWMS Sensor Data";
     Caption = 'Sensor Data';
-    Editable = false;
-    InsertAllowed = false;
+    Editable = true;
+    InsertAllowed = true;
     DeleteAllowed = true;
-    ModifyAllowed = false;
+    ModifyAllowed = true;
 
     layout
     {

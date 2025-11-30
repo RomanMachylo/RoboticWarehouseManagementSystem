@@ -75,6 +75,7 @@ codeunit 50000 "RWMS Sensor Data Management"
     local procedure CheckForAnomalies(var SensorData: Record "RWMS Sensor Data")
     var
         HistoricalData: Record "RWMS Sensor Data";
+        Math: Codeunit Math;
         AvgValue: Decimal;
         StdDev: Decimal;
         Count: Integer;
@@ -97,7 +98,7 @@ codeunit 50000 "RWMS Sensor Data Management"
 
             if Count > 10 then begin // Need enough data points
                 AvgValue := SumValue / Count;
-                StdDev := Sqrt((SumSquares / Count) - Power(AvgValue, 2));
+                StdDev := Math.Sqrt((SumSquares / Count) - Power(AvgValue, 2));
 
                 // Mark as anomaly if value is more than 3 standard deviations from mean
                 if Abs(SensorData.Value - AvgValue) > (3 * StdDev) then begin

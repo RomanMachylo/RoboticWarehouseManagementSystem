@@ -230,7 +230,7 @@ RWMS Sensor Data Management.CleanupOldData(90); // Keep last 90 days
 - **RWMS Read Only** (50001) - View-only access
 
 ### Data Classification
-All sensitive data is classified as `CustomerContent` for GDPR compliance.
+All sensitive data is classified as `ToBeClassified` for GDPR compliance.
 
 ## Support & Development
 

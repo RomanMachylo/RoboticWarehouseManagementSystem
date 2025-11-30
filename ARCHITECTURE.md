@@ -277,7 +277,7 @@ Dashboard Updated
 - Field-level security through permissions
 
 ### Data Protection
-- GDPR compliance: All fields marked CustomerContent
+- GDPR compliance: All fields marked ToBeClassified
 - Audit trail: Created By, timestamps on all records
 - Data retention: Configurable cleanup policies
 
