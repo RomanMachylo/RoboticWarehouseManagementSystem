@@ -151,6 +151,72 @@ page 50007 "RWMS Activities"
                     end;
                 }
             }
+            cuegroup(WorkManagement)
+            {
+                Caption = 'Work Management';
+
+                field(OpenWorkOrders; OpenWorkOrders)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Open Work Orders';
+                    ToolTip = 'Shows the number of open work orders.';
+                    StyleExpr = 'Attention';
+
+                    trigger OnDrillDown()
+                    var
+                        WorkOrder: Record "RWMS Work Order";
+                    begin
+                        WorkOrder.SetFilter(Status, '%1|%2|%3', WorkOrder.Status::Open, WorkOrder.Status::Assigned, WorkOrder.Status::"In Progress");
+                        Page.Run(Page::"RWMS Work Order List", WorkOrder);
+                    end;
+                }
+                field(HighPriorityWorkOrders; HighPriorityWorkOrders)
+                {
+                    ApplicationArea = All;
+                    Caption = 'High Priority Work Orders';
+                    ToolTip = 'Shows the number of high priority work orders.';
+                    StyleExpr = 'Unfavorable';
+
+                    trigger OnDrillDown()
+                    var
+                        WorkOrder: Record "RWMS Work Order";
+                    begin
+                        WorkOrder.SetFilter(Priority, '%1|%2', WorkOrder.Priority::Critical, WorkOrder.Priority::Emergency);
+                        WorkOrder.SetFilter(Status, '<>%1', WorkOrder.Status::Completed);
+                        Page.Run(Page::"RWMS Work Order List", WorkOrder);
+                    end;
+                }
+                field(ScheduledMaintenanceToday; ScheduledMaintenanceToday)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Maintenance Scheduled Today';
+                    ToolTip = 'Shows maintenance scheduled for today.';
+
+                    trigger OnDrillDown()
+                    var
+                        MaintenanceSchedule: Record "RWMS Maintenance Schedule";
+                    begin
+                        MaintenanceSchedule.SetRange("Scheduled Date", Today());
+                        Page.Run(Page::"RWMS Maintenance Schedule List", MaintenanceSchedule);
+                    end;
+                }
+                field(OverdueWorkOrders; OverdueWorkOrders)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Overdue Work Orders';
+                    ToolTip = 'Shows the number of overdue work orders.';
+                    StyleExpr = 'Unfavorable';
+
+                    trigger OnDrillDown()
+                    var
+                        WorkOrder: Record "RWMS Work Order";
+                    begin
+                        WorkOrder.SetFilter("Due DateTime", '<%1', CurrentDateTime());
+                        WorkOrder.SetFilter(Status, '<>%1', WorkOrder.Status::Completed);
+                        Page.Run(Page::"RWMS Work Order List", WorkOrder);
+                    end;
+                }
+            }
         }
     }
 
@@ -170,6 +236,8 @@ page 50007 "RWMS Activities"
         SensorConfig: Record "RWMS Sensor Configuration";
         SensorData: Record "RWMS Sensor Data";
         AnalyticsLog: Record "RWMS Analytics Log";
+        WorkOrder: Record "RWMS Work Order";
+        MaintenanceSchedule: Record "RWMS Maintenance Schedule";
     begin
         TotalWarehouses := Warehouse.Count();
         Warehouse.SetRange(Status, Warehouse.Status::Active);
@@ -196,6 +264,24 @@ page 50007 "RWMS Activities"
         SensorData.SetRange("Is Anomaly", true);
         SensorData.SetRange("Reading DateTime", CreateDateTime(Today(), 0T), CreateDateTime(Today(), 235959T));
         AnomaliesDetected := SensorData.Count();
+
+        // Work Orders
+        WorkOrder.SetFilter(Status, '%1|%2|%3', WorkOrder.Status::Open, WorkOrder.Status::Assigned, WorkOrder.Status::"In Progress");
+        OpenWorkOrders := WorkOrder.Count();
+
+        WorkOrder.Reset();
+        WorkOrder.SetFilter(Priority, '%1|%2', WorkOrder.Priority::Critical, WorkOrder.Priority::Emergency);
+        WorkOrder.SetFilter(Status, '<>%1', WorkOrder.Status::Completed);
+        HighPriorityWorkOrders := WorkOrder.Count();
+
+        WorkOrder.Reset();
+        WorkOrder.SetFilter("Due DateTime", '<%1', CurrentDateTime());
+        WorkOrder.SetFilter(Status, '<>%1', WorkOrder.Status::Completed);
+        OverdueWorkOrders := WorkOrder.Count();
+
+        // Maintenance
+        MaintenanceSchedule.SetRange("Scheduled Date", Today());
+        ScheduledMaintenanceToday := MaintenanceSchedule.Count();
     end;
 
     var
@@ -208,4 +294,8 @@ page 50007 "RWMS Activities"
         SensorsInMaintenance: Integer;
         AIAnalyticsRuns: Integer;
         AnomaliesDetected: Integer;
+        OpenWorkOrders: Integer;
+        HighPriorityWorkOrders: Integer;
+        OverdueWorkOrders: Integer;
+        ScheduledMaintenanceToday: Integer;
 }

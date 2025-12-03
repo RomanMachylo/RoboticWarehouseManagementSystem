@@ -17,10 +17,8 @@ codeunit 50000 "RWMS Sensor Data Management"
         if SensorConfig.Status <> SensorConfig.Status::Active then
             Error('Sensor %1 is not active.', SensorID);
 
-        // Determine alert level
         AlertLevel := DetermineAlertLevel(SensorConfig, Value, AlertMessage);
 
-        // Create sensor data record
         SensorData.Init();
         SensorData."Sensor ID" := SensorID;
         SensorData."Warehouse Code" := SensorConfig."Warehouse Code";
@@ -112,9 +110,23 @@ codeunit 50000 "RWMS Sensor Data Management"
     local procedure SendAlert(SensorData: Record "RWMS Sensor Data")
     var
         SensorConfig: Record "RWMS Sensor Configuration";
+        AlertHistory: Record "RWMS Alert History";
     begin
         if SensorConfig.Get(SensorData."Sensor ID") then
             if SensorConfig."Alert Enabled" and (SensorConfig."Alert Email" <> '') then begin
+                // Create Alert History record
+                AlertHistory.Init();
+                AlertHistory."Sensor ID" := SensorData."Sensor ID";
+                AlertHistory."Warehouse Code" := SensorData."Warehouse Code";
+                AlertHistory."Sensor Type" := SensorData."Sensor Type";
+                AlertHistory."Created DateTime" := SensorData."Reading DateTime";
+                AlertHistory."Alert Level" := SensorData."Alert Level";
+                AlertHistory.Status := AlertHistory.Status::New;
+                AlertHistory."Alert Message" := SensorData."Alert Message";
+                AlertHistory."Sensor Value" := SensorData.Value;
+                AlertHistory."Zone Code" := SensorData."Zone Code";
+                AlertHistory.Insert(true);
+
                 // Email alert functionality would be implemented here
                 // For now, we'll just log it
                 Message('Alert would be sent to %1: %2', SensorConfig."Alert Email", SensorData."Alert Message");
