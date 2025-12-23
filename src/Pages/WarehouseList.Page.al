@@ -105,6 +105,21 @@ page 50000 "RWMS Warehouse List"
                 RunObject = page "RWMS Analytics Log List";
                 RunPageLink = "Warehouse Code" = field(Code);
             }
+
+            action(GenerateSampleData)
+            {
+                ApplicationArea = All;
+                Caption = 'Generate Sample Data';
+                ToolTip = 'Generate realistic sample data for demonstration purposes.';
+                Image = CreateDocument;
+
+                trigger OnAction()
+                var
+                    SampleDataGenerator: Codeunit "RWMS Sample Data Generator";
+                begin
+                    SampleDataGenerator.GenerateAllSampleData();
+                end;
+            }
         }
         area(Navigation)
         {

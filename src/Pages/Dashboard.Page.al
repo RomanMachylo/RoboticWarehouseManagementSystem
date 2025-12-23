@@ -29,7 +29,6 @@ page 50006 "RWMS Dashboard"
             group(Warehouses)
             {
                 Caption = 'Warehouses';
-                Image = Warehouse;
 
                 action(WarehouseList)
                 {
@@ -56,7 +55,6 @@ page 50006 "RWMS Dashboard"
             group(Monitoring)
             {
                 Caption = 'Monitoring';
-                Image = Statistics;
 
                 action(SensorData)
                 {
@@ -90,7 +88,6 @@ page 50006 "RWMS Dashboard"
             group(Maintenance)
             {
                 Caption = 'Maintenance';
-                Image = ServiceTasks;
 
                 action(WorkOrders)
                 {
@@ -189,7 +186,6 @@ page 50006 "RWMS Dashboard"
                 ApplicationArea = All;
                 Caption = 'New Maintenance Schedule';
                 ToolTip = 'Create a new maintenance schedule.';
-                Image = NewTimeSheet;
                 RunObject = page "RWMS Maintenance Schedule Card";
                 RunPageMode = Create;
             }
